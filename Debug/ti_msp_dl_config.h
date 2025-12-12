@@ -77,44 +77,64 @@ extern "C" {
 
 
 
+/* Defines for UART_0 */
+#define UART_0_INST                                                        UART0
+#define UART_0_INST_FREQUENCY                                            4000000
+#define UART_0_INST_IRQHandler                                  UART0_IRQHandler
+#define UART_0_INST_INT_IRQN                                      UART0_INT_IRQn
+#define GPIO_UART_0_RX_PORT                                                GPIOA
+#define GPIO_UART_0_TX_PORT                                                GPIOA
+#define GPIO_UART_0_RX_PIN                                        DL_GPIO_PIN_11
+#define GPIO_UART_0_TX_PIN                                        DL_GPIO_PIN_10
+#define GPIO_UART_0_IOMUX_RX                                     (IOMUX_PINCM22)
+#define GPIO_UART_0_IOMUX_TX                                     (IOMUX_PINCM21)
+#define GPIO_UART_0_IOMUX_RX_FUNC                      IOMUX_PINCM22_PF_UART0_RX
+#define GPIO_UART_0_IOMUX_TX_FUNC                      IOMUX_PINCM21_PF_UART0_TX
+#define UART_0_BAUD_RATE                                                  (9600)
+#define UART_0_IBRD_4_MHZ_9600_BAUD                                         (26)
+#define UART_0_FBRD_4_MHZ_9600_BAUD                                          (3)
 
-/* Defines for B2: GPIOA.8 with pinCMx 19 on package pin 54 */
+
+
+
+
+/* Defines for B2: GPIOA.8 with pinCMx 19 on package pin 16 */
 #define KEY_B2_PORT                                                      (GPIOA)
 #define KEY_B2_PIN                                               (DL_GPIO_PIN_8)
 #define KEY_B2_IOMUX                                             (IOMUX_PINCM19)
-/* Defines for B3: GPIOB.3 with pinCMx 16 on package pin 51 */
+/* Defines for B3: GPIOB.3 with pinCMx 16 on package pin 15 */
 #define KEY_B3_PORT                                                      (GPIOB)
 #define KEY_B3_PIN                                               (DL_GPIO_PIN_3)
 #define KEY_B3_IOMUX                                             (IOMUX_PINCM16)
-/* Defines for LED0: GPIOB.6 with pinCMx 23 on package pin 58 */
+/* Defines for LED0: GPIOB.6 with pinCMx 23 on package pin 20 */
 #define LED_LED0_PORT                                                    (GPIOB)
 #define LED_LED0_PIN                                             (DL_GPIO_PIN_6)
 #define LED_LED0_IOMUX                                           (IOMUX_PINCM23)
-/* Defines for LED1: GPIOA.11 with pinCMx 22 on package pin 57 */
+/* Defines for LED1: GPIOA.7 with pinCMx 14 on package pin 13 */
 #define LED_LED1_PORT                                                    (GPIOA)
-#define LED_LED1_PIN                                            (DL_GPIO_PIN_11)
-#define LED_LED1_IOMUX                                           (IOMUX_PINCM22)
-/* Defines for LED2: GPIOA.10 with pinCMx 21 on package pin 56 */
+#define LED_LED1_PIN                                             (DL_GPIO_PIN_7)
+#define LED_LED1_IOMUX                                           (IOMUX_PINCM14)
+/* Defines for LED2: GPIOA.6 with pinCMx 11 on package pin 12 */
 #define LED_LED2_PORT                                                    (GPIOA)
-#define LED_LED2_PIN                                            (DL_GPIO_PIN_10)
-#define LED_LED2_IOMUX                                           (IOMUX_PINCM21)
-/* Defines for LED3: GPIOA.9 with pinCMx 20 on package pin 55 */
+#define LED_LED2_PIN                                             (DL_GPIO_PIN_6)
+#define LED_LED2_IOMUX                                           (IOMUX_PINCM11)
+/* Defines for LED3: GPIOA.9 with pinCMx 20 on package pin 17 */
 #define LED_LED3_PORT                                                    (GPIOA)
 #define LED_LED3_PIN                                             (DL_GPIO_PIN_9)
 #define LED_LED3_IOMUX                                           (IOMUX_PINCM20)
-/* Defines for LED4: GPIOA.16 with pinCMx 38 on package pin 9 */
+/* Defines for LED4: GPIOA.16 with pinCMx 38 on package pin 31 */
 #define LED_LED4_PORT                                                    (GPIOA)
 #define LED_LED4_PIN                                            (DL_GPIO_PIN_16)
 #define LED_LED4_IOMUX                                           (IOMUX_PINCM38)
-/* Defines for LED5: GPIOA.15 with pinCMx 37 on package pin 8 */
+/* Defines for LED5: GPIOA.15 with pinCMx 37 on package pin 30 */
 #define LED_LED5_PORT                                                    (GPIOA)
 #define LED_LED5_PIN                                            (DL_GPIO_PIN_15)
 #define LED_LED5_IOMUX                                           (IOMUX_PINCM37)
-/* Defines for LED6: GPIOA.13 with pinCMx 35 on package pin 6 */
+/* Defines for LED6: GPIOA.13 with pinCMx 35 on package pin 28 */
 #define LED_LED6_PORT                                                    (GPIOA)
 #define LED_LED6_PIN                                            (DL_GPIO_PIN_13)
 #define LED_LED6_IOMUX                                           (IOMUX_PINCM35)
-/* Defines for LED7: GPIOA.12 with pinCMx 34 on package pin 5 */
+/* Defines for LED7: GPIOA.12 with pinCMx 34 on package pin 27 */
 #define LED_LED7_PORT                                                    (GPIOA)
 #define LED_LED7_PIN                                            (DL_GPIO_PIN_12)
 #define LED_LED7_IOMUX                                           (IOMUX_PINCM34)
@@ -125,8 +145,11 @@ void SYSCFG_DL_init(void);
 void SYSCFG_DL_initPower(void);
 void SYSCFG_DL_GPIO_init(void);
 void SYSCFG_DL_SYSCTL_init(void);
+void SYSCFG_DL_UART_0_init(void);
 
 
+bool SYSCFG_DL_saveConfiguration(void);
+bool SYSCFG_DL_restoreConfiguration(void);
 
 #ifdef __cplusplus
 }

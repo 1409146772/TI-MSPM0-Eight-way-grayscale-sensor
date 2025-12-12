@@ -31,61 +31,43 @@
  */
 
 #include "ti_msp_dl_config.h"
+#include "LED.h"
+#include <stdint.h>
+#include <stdio.h>
 
-//自定义延时（不精确）
-void delay_ms(unsigned int ms)
+/* Redirect stdio output to UART0 (blocking, no CRLF translation) */
+int fputc(int c, FILE *f)
 {
-    unsigned int i, j;
-    // 下面的嵌套循环的次数是根据主控频率和编译器生成的指令周期大致计算出来的，
-    // 需要通过实际测试调整来达到所需的延时。
-    for (i = 0; i < ms; i++)
-    {
-        for (j = 0; j < 8000; j++)
-        {
-            // 仅执行一个足够简单以致于可以预测其执行时间的操作
-            __asm__("nop"); // "nop" 代表“无操作”，在大多数架构中，这会消耗一个或几个时钟周期
-        }
-    }
+    (void)f;
+    DL_UART_Main_transmitDataBlocking(UART_0_INST, (uint8_t)c);
+    return c;
 }
 
+int fputs(const char *s, FILE *f)
+{
+    (void)f;
+    while (*s) {
+        DL_UART_Main_transmitDataBlocking(UART_0_INST, (uint8_t)(*s++));
+    }
+    return 0;
+}
+
+int puts(const char *s)
+{
+    int rc = fputs(s, stdout);
+    fputc('\n', stdout);
+    return rc;
+}
 
 int main(void)
 {
     SYSCFG_DL_init();
+    LED_init();
 
-    // 定义LED的端口和引脚结构
-    typedef struct {
-        GPIO_Regs *port;
-        uint32_t pin;
-    } LED_T;
+    //printf("UART0 printf redirect ready\n");
 
-    // 初始化LED数组，包含所有8个LED的端口和引脚信息
-    LED_T leds[] = {
-        {LED_LED0_PORT, LED_LED0_PIN},
-        {LED_LED1_PORT, LED_LED1_PIN},
-        {LED_LED2_PORT, LED_LED2_PIN},
-        {LED_LED3_PORT, LED_LED3_PIN},
-        {LED_LED4_PORT, LED_LED4_PIN},
-        {LED_LED5_PORT, LED_LED5_PIN},
-        {LED_LED6_PORT, LED_LED6_PIN},
-        {LED_LED7_PORT, LED_LED7_PIN}
-    };
-
-    uint8_t i;
-    
     while (1) {
-        // 正向流水灯：从LED0到LED7依次点亮
-        for (i = 0; i < 8; i++) {
-            DL_GPIO_setPins(leds[i].port, leds[i].pin);  // 点亮当前LED
-            delay_ms(1000);  // 延迟100ms
-            DL_GPIO_clearPins(leds[i].port, leds[i].pin);  // 熄灭当前LED
-        }
-        
-        // 反向流水灯：从LED7到LED0依次点亮
-        for (i = 7; i > 0; i--) {
-            DL_GPIO_setPins(leds[i].port, leds[i].pin);  // 点亮当前LED
-            delay_ms(1000);  // 延迟100ms
-            DL_GPIO_clearPins(leds[i].port, leds[i].pin);  // 熄灭当前LED
-        }
+        printf("hellow");
+        delay_ms(1000);
     }
 }
