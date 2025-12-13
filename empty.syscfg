@@ -9,6 +9,8 @@
 /**
  * Import the modules used in this configuration.
  */
+const ADC12  = scripting.addModule("/ti/driverlib/ADC12", {}, false);
+const ADC121 = ADC12.addInstance();
 const GPIO   = scripting.addModule("/ti/driverlib/GPIO", {}, false);
 const GPIO1  = GPIO.addInstance();
 const GPIO2  = GPIO.addInstance();
@@ -19,6 +21,51 @@ const UART1  = UART.addInstance();
 /**
  * Write custom configuration values to the imported modules.
  */
+ADC121.adcMem1chansel                     = "DL_ADC12_INPUT_CHAN_1";
+ADC121.adcMem2chansel                     = "DL_ADC12_INPUT_CHAN_2";
+ADC121.adcMem3chansel                     = "DL_ADC12_INPUT_CHAN_3";
+ADC121.adcMem4chansel                     = "DL_ADC12_INPUT_CHAN_5";
+ADC121.adcMem5chansel                     = "DL_ADC12_INPUT_CHAN_6";
+ADC121.adcMem6chansel                     = "DL_ADC12_INPUT_CHAN_7";
+ADC121.adcMem7chansel                     = "DL_ADC12_INPUT_CHAN_12";
+ADC121.repeatMode                         = true;
+ADC121.powerDownMode                      = "DL_ADC12_POWER_DOWN_MODE_MANUAL";
+ADC121.sampleTime0                        = "62ns";
+ADC121.configureDMA                       = true;
+ADC121.enabledInterrupts                  = ["DL_ADC12_INTERRUPT_DMA_DONE"];
+ADC121.enableFIFO                         = true;
+ADC121.samplingOperationMode              = "sequence";
+ADC121.endAdd                             = 7;
+ADC121.sampCnt                            = 8;
+ADC121.$name                              = "ADC12_0";
+ADC121.enabledDMATriggers                 = ["DL_ADC12_DMA_MEM6_RESULT_LOADED"];
+ADC121.adcPin0Config.hideOutputInversion  = scripting.forceWrite(false);
+ADC121.adcPin0Config.$name                = "ti_driverlib_gpio_GPIOPinGeneric2";
+ADC121.DMA_CHANNEL.$name                  = "DMA_CH0";
+ADC121.DMA_CHANNEL.configureTransferSize  = true;
+ADC121.DMA_CHANNEL.addressMode            = "f2b";
+ADC121.DMA_CHANNEL.transferMode           = "FULL_CH_REPEAT_SINGLE";
+ADC121.DMA_CHANNEL.transferSize           = 960;
+ADC121.adcPin1Config.$name                = "ti_driverlib_gpio_GPIOPinGeneric3";
+ADC121.adcPin1Config.hideOutputInversion  = scripting.forceWrite(false);
+ADC121.adcPin2Config.$name                = "ti_driverlib_gpio_GPIOPinGeneric4";
+ADC121.adcPin2Config.hideOutputInversion  = scripting.forceWrite(false);
+ADC121.adcPin3Config.$name                = "ti_driverlib_gpio_GPIOPinGeneric5";
+ADC121.adcPin3Config.hideOutputInversion  = scripting.forceWrite(false);
+ADC121.adcPin5Config.$name                = "ti_driverlib_gpio_GPIOPinGeneric6";
+ADC121.adcPin5Config.hideOutputInversion  = scripting.forceWrite(false);
+ADC121.adcPin6Config.$name                = "ti_driverlib_gpio_GPIOPinGeneric7";
+ADC121.adcPin6Config.hideOutputInversion  = scripting.forceWrite(false);
+ADC121.adcPin7Config.$name                = "ti_driverlib_gpio_GPIOPinGeneric8";
+ADC121.adcPin7Config.hideOutputInversion  = scripting.forceWrite(false);
+ADC121.adcPin12Config.$name               = "ti_driverlib_gpio_GPIOPinGeneric9";
+ADC121.adcPin12Config.hideOutputInversion = scripting.forceWrite(false);
+
+const Board                       = scripting.addModule("/ti/driverlib/Board", {}, false);
+Board.peripheral.$assign          = "DEBUGSS";
+Board.peripheral.swclkPin.$assign = "PA20";
+Board.peripheral.swdioPin.$assign = "PA19";
+
 GPIO1.$name                              = "KEY";
 GPIO1.associatedPins.create(2);
 GPIO1.associatedPins[0].$name            = "B2";
@@ -33,11 +80,6 @@ GPIO1.associatedPins[1].internalResistor = "PULL_UP";
 GPIO1.associatedPins[1].assignedPort     = "PORTB";
 GPIO1.associatedPins[1].assignedPin      = "3";
 GPIO1.associatedPins[1].pin.$assign      = "PB3";
-
-const Board                       = scripting.addModule("/ti/driverlib/Board", {}, false);
-Board.peripheral.$assign          = "DEBUGSS";
-Board.peripheral.swclkPin.$assign = "PA20";
-Board.peripheral.swdioPin.$assign = "PA19";
 
 GPIO2.$name                          = "LED";
 GPIO2.associatedPins.create(8);
@@ -92,5 +134,15 @@ ProjectConfig.migrationCondition = true;
  * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
  * re-solve from scratch.
  */
-GPIO2.associatedPins[1].pin.$suggestSolution = "PA7";
-GPIO2.associatedPins[2].pin.$suggestSolution = "PA6";
+ADC121.DMA_CHANNEL.peripheral.$suggestSolution = "DMA_CH0";
+ADC121.peripheral.$suggestSolution             = "ADC0";
+ADC121.peripheral.adcPin0.$suggestSolution     = "PA27";
+ADC121.peripheral.adcPin1.$suggestSolution     = "PA26";
+ADC121.peripheral.adcPin2.$suggestSolution     = "PA25";
+ADC121.peripheral.adcPin3.$suggestSolution     = "PA24";
+ADC121.peripheral.adcPin5.$suggestSolution     = "PB24";
+ADC121.peripheral.adcPin6.$suggestSolution     = "PB20";
+ADC121.peripheral.adcPin7.$suggestSolution     = "PA22";
+ADC121.peripheral.adcPin12.$suggestSolution    = "PA14";
+GPIO2.associatedPins[1].pin.$suggestSolution   = "PA7";
+GPIO2.associatedPins[2].pin.$suggestSolution   = "PA6";
