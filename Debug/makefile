@@ -131,7 +131,7 @@ all: $(OBJS) $(GEN_CMDS)
 huidu_yjian.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"D:/MCU/CCS/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"huidu_yjian.map" -Wl,-i"D:/MCU/CCS/mspm0_sdk_2_05_01_00/source" -Wl,-i"C:/Users/LuZIyu/workspace_ccstheia/huidu_yjian" -Wl,-i"C:/Users/LuZIyu/workspace_ccstheia/huidu_yjian/Debug/syscfg" -Wl,-i"D:/MCU/CCS/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="huidu_yjian_linkInfo.xml" -Wl,--rom_model -o "huidu_yjian.out" $(ORDERED_OBJS)
+	"D:/MCU/CCS/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"huidu_yjian.map" -Wl,-i"D:/MCU/CCS/mspm0_sdk_2_05_01_00/source" -Wl,-i"C:/Users/LuZIyu/workspace_ccstheia/8-channel grayscale sensor" -Wl,-i"C:/Users/LuZIyu/workspace_ccstheia/8-channel grayscale sensor/Debug/syscfg" -Wl,-i"D:/MCU/CCS/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="huidu_yjian_linkInfo.xml" -Wl,--rom_model -o "huidu_yjian.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
