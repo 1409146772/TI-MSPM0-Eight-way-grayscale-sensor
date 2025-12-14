@@ -61,7 +61,7 @@ int puts(const char *s)
 
 uint16_t gADCSamples[2400];
 uint32_t avg[8];
-char flag=0;
+volatile uint32_t flag=0;
 int main(void)
 {
     SYSCFG_DL_init();
@@ -76,26 +76,17 @@ int main(void)
     /* Setup interrupts on device */
     NVIC_EnableIRQ(ADC12_0_INST_INT_IRQN);
 
-    /* Reset FIFO to ensure no stale data */
-    DL_ADC12_disableFIFO(ADC12_0_INST);
-    DL_ADC12_enableFIFO(ADC12_0_INST);
+    // /* Reset FIFO to ensure no stale data */
+    // DL_ADC12_disableFIFO(ADC12_0_INST);
+    // DL_ADC12_enableFIFO(ADC12_0_INST);
 
 
 
     while (1) {
-         for (uint32_t ch = 0; ch < 8; ch++) {
-                printf("CH%lu avg=%lu\r\n", (unsigned long)ch, (unsigned long)avg[ch]);
-         }
-
-    }
-}
-
-void ADC12_0_INST_IRQHandler(void)
-{
-    switch (DL_ADC12_getPendingInterrupt(ADC12_0_INST)) {
-        case DL_ADC12_IIDX_DMA_DONE:
-            DL_TimerA_stopCounter(TIMER_0_INST);
-
+         
+         //数据处理部分
+         if(flag){
+            flag=0;
             const uint32_t total = 480;
             const uint32_t channels = 8;
             const uint32_t per_channel = total / channels;
@@ -106,12 +97,28 @@ void ADC12_0_INST_IRQHandler(void)
             for (uint32_t ch = 0; ch < channels; ch++) {
                 avg[ch] = sum[ch] / per_channel;
             }
-           
-           
-           
+            
+
+            for (uint32_t ch = 0; ch < 8; ch++) {
+                printf("CH%lu avg=%lu\r\n", (unsigned long)ch, (unsigned long)avg[ch]);
+            }
+
             /* 重新设置Timer计数值，以调整采样间隔 */
             DL_TimerA_setLoadValue(TIMER_0_INST, TIMER_0_INST_LOAD_VALUE); 
             DL_TimerA_startCounter(TIMER_0_INST);
+        }
+         
+    }
+}
+
+void ADC12_0_INST_IRQHandler(void)
+{
+    switch (DL_ADC12_getPendingInterrupt(ADC12_0_INST)) {
+        case DL_ADC12_IIDX_DMA_DONE:
+            DL_TimerA_stopCounter(TIMER_0_INST);
+            
+            flag=1;
+            
             break;
         default:
             break;
