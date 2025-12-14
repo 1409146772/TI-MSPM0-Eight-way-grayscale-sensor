@@ -35,6 +35,8 @@ int main(void)
 {
     SYSCFG_DL_init();  /* 设备库与系统配置初始化，具体内容由 SysConfig 生成 */
 
+    /* 确保在配置 DMA 之前不触发采样与事件 */
+    DL_TimerA_stopCounter(TIMER_0_INST);
     
     EEPROM_TypeB_init();
     
@@ -47,7 +49,7 @@ int main(void)
         }
         printf("last_avg[%d] = %d\n", i, last_avg[i]);
     }
-    printf("**************************\n");
+    //printf("**************************\n");
     /* 配置 DMA 源、目标与传输大小
      * 源地址：ADC12 FIFO 地址（由驱动库提供）
      * 目标地址：采样缓冲区首地址 gADCSamples[0]
@@ -62,6 +64,9 @@ int main(void)
     /* 使能 ADC12 中断（用于接收 DMA 完成事件） */
     NVIC_EnableIRQ(ADC12_0_INST_INT_IRQN);
     key_init();
+    
+    /* 完成 DMA/中断配置后再启动定时器触发采样 */
+    DL_TimerA_startCounter(TIMER_0_INST);
 
     while (1) {
         /* 数据处理部分：当 DMA 完成后，中断会将 flag 置为 1
