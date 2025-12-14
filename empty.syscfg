@@ -116,10 +116,10 @@ SYSCTL.peripheral.$assign    = "SYSCTL";
 
 TIMER1.$name                       = "TIMER_0";
 TIMER1.timerMode                   = "PERIODIC";
-TIMER1.timerPeriod                 = "1ms";
 TIMER1.timerStartTimer             = true;
 TIMER1.event1PublisherChannel      = 1;
 TIMER1.event1ControllerInterruptEn = ["ZERO_EVENT"];
+TIMER1.timerPeriod                 = "2ms";
 
 UART1.$name                    = "UART_0";
 UART1.enabledInterrupts        = ["RX"];

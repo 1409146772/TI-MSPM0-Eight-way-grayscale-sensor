@@ -60,6 +60,7 @@ int puts(const char *s)
 }
 
 uint16_t gADCSamples[2400];
+uint32_t avg[8];
 char flag=0;
 int main(void)
 {
@@ -79,18 +80,13 @@ int main(void)
     DL_ADC12_disableFIFO(ADC12_0_INST);
     DL_ADC12_enableFIFO(ADC12_0_INST);
 
-    //DL_ADC12_startConversion(ADC12_0_INST);
 
-    
-    //printf("UART0 printf redirect ready\n");
 
     while (1) {
-        /* 打印gADCSamples的前八个数据 */
-        // for (uint8_t i = 0; i < 8; i++) {
-        //         printf("gADCSamples[%d] = %d\r\n", i, gADCSamples[i]);
-        // }
-        
-        //delay_ms(1000);
+         for (uint32_t ch = 0; ch < 8; ch++) {
+                printf("CH%lu avg=%lu\r\n", (unsigned long)ch, (unsigned long)avg[ch]);
+         }
+
     }
 }
 
@@ -98,16 +94,24 @@ void ADC12_0_INST_IRQHandler(void)
 {
     switch (DL_ADC12_getPendingInterrupt(ADC12_0_INST)) {
         case DL_ADC12_IIDX_DMA_DONE:
-            //DL_ADC12_disableConversions(ADC12_0_INST);
             DL_TimerA_stopCounter(TIMER_0_INST);
-            // for (uint32_t i = 0; i < 8; i++) {
-            //     printf("gADCSamples[%d] = %d\r\n", i, gADCSamples[i]);
-            // }
-            flag=1;
 
+            const uint32_t total = 480;
+            const uint32_t channels = 8;
+            const uint32_t per_channel = total / channels;
+            uint32_t sum[8] = {0};
+            for (uint32_t i = 0; i < total; i++) {
+                sum[i % channels] += gADCSamples[i];
+            }
+            for (uint32_t ch = 0; ch < channels; ch++) {
+                avg[ch] = sum[ch] / per_channel;
+            }
+           
+           
+           
+            /* 重新设置Timer计数值，以调整采样间隔 */
+            DL_TimerA_setLoadValue(TIMER_0_INST, TIMER_0_INST_LOAD_VALUE); 
             DL_TimerA_startCounter(TIMER_0_INST);
-            // DL_ADC12_enableConversions(ADC12_0_INST);
-            // DL_ADC12_startConversion(ADC12_0_INST);
             break;
         default:
             break;
