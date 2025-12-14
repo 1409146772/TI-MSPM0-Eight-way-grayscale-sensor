@@ -1,6 +1,6 @@
 # FIXED
 
-empty.o: ../empty.c \
+UART.o: ../UART.c \
  ti_msp_dl_config.h \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h \
@@ -74,8 +74,7 @@ empty.o: ../empty.c \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_vref.h \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_wwdt.h \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_interrupt.h \
- D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h \
- ../LED.h ../UART.h ../data_process.h
+ D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h
 ti_msp_dl_config.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h:
@@ -150,6 +149,3 @@ D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_vref.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_wwdt.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_interrupt.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h:
-../LED.h:
-../UART.h:
-../data_process.h:

@@ -10,6 +10,8 @@ SYSCFG_SRCS += \
 
 C_SRCS += \
 ../LED.c \
+../UART.c \
+../data_process.c \
 ../empty.c \
 ./ti_msp_dl_config.c \
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0g350x_ticlang.c 
@@ -24,6 +26,8 @@ GEN_FILES += \
 
 C_DEPS += \
 ./LED.d \
+./UART.d \
+./data_process.d \
 ./empty.d \
 ./ti_msp_dl_config.d \
 ./startup_mspm0g350x_ticlang.d 
@@ -33,6 +37,8 @@ GEN_OPTS += \
 
 OBJS += \
 ./LED.o \
+./UART.o \
+./data_process.o \
 ./empty.o \
 ./ti_msp_dl_config.o \
 ./startup_mspm0g350x_ticlang.o 
@@ -44,6 +50,8 @@ GEN_MISC_FILES += \
 
 OBJS__QUOTED += \
 "LED.o" \
+"UART.o" \
+"data_process.o" \
 "empty.o" \
 "ti_msp_dl_config.o" \
 "startup_mspm0g350x_ticlang.o" 
@@ -55,6 +63,8 @@ GEN_MISC_FILES__QUOTED += \
 
 C_DEPS__QUOTED += \
 "LED.d" \
+"UART.d" \
+"data_process.d" \
 "empty.d" \
 "ti_msp_dl_config.d" \
 "startup_mspm0g350x_ticlang.d" 
@@ -66,6 +76,8 @@ GEN_FILES__QUOTED += \
 
 C_SRCS__QUOTED += \
 "../LED.c" \
+"../UART.c" \
+"../data_process.c" \
 "../empty.c" \
 "./ti_msp_dl_config.c" \
 "D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0g350x_ticlang.c" 

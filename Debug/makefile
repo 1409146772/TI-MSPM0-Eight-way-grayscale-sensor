@@ -11,6 +11,8 @@ GEN_CMDS__FLAG := -Wl,-l"./device_linker.cmd"
 
 ORDERED_OBJS += \
 "./LED.o" \
+"./UART.o" \
+"./data_process.o" \
 "./empty.o" \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0g350x_ticlang.o" \
@@ -138,8 +140,8 @@ huidu_yjian.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "LED.o" "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" 
-	-$(RM) "LED.d" "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" 
+	-$(RM) "LED.o" "UART.o" "data_process.o" "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" 
+	-$(RM) "LED.d" "UART.d" "data_process.d" "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
