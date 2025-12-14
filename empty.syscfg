@@ -1,8 +1,8 @@
 /**
  * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
  * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
- * @cliArgs --device "MSPM0G350X" --part "Default" --package "LQFP-48(PT)" --product "mspm0_sdk@2.05.01.01"
- * @v2CliArgs --device "MSPM0G3507" --package "LQFP-48(PT)" --product "mspm0_sdk@2.05.01.01"
+ * @cliArgs --device "MSPM0G350X" --part "Default" --package "LQFP-64(PM)" --product "mspm0_sdk@2.05.01.01"
+ * @v2CliArgs --device "MSPM0G3507" --package "LQFP-64(PM)" --product "mspm0_sdk@2.05.01.01"
  * @versions {"tool":"1.24.0+4110"}
  */
 
@@ -50,6 +50,16 @@ ADC121.DMA_CHANNEL.configureTransferSize = true;
 ADC121.DMA_CHANNEL.transferMode          = "FULL_CH_REPEAT_SINGLE";
 ADC121.DMA_CHANNEL.addressMode           = "f2b";
 ADC121.DMA_CHANNEL.transferSize          = 480;
+ADC121.DMA_CHANNEL.peripheral.$assign    = "DMA_CH0";
+ADC121.peripheral.$assign                = "ADC0";
+ADC121.peripheral.adcPin0.$assign        = "PA27";
+ADC121.peripheral.adcPin1.$assign        = "PA26";
+ADC121.peripheral.adcPin2.$assign        = "PA25";
+ADC121.peripheral.adcPin3.$assign        = "PA24";
+ADC121.peripheral.adcPin5.$assign        = "PB24";
+ADC121.peripheral.adcPin6.$assign        = "PB20";
+ADC121.peripheral.adcPin7.$assign        = "PA22";
+ADC121.peripheral.adcPin12.$assign       = "PA14";
 ADC121.adcPin1Config.$name               = "ti_driverlib_gpio_GPIOPinGeneric3";
 ADC121.adcPin2Config.$name               = "ti_driverlib_gpio_GPIOPinGeneric4";
 ADC121.adcPin3Config.$name               = "ti_driverlib_gpio_GPIOPinGeneric5";
@@ -64,7 +74,7 @@ Board.peripheral.swclkPin.$assign = "PA20";
 Board.peripheral.swdioPin.$assign = "PA19";
 
 GPIO1.$name                              = "KEY";
-GPIO1.associatedPins.create(2);
+GPIO1.associatedPins.create(3);
 GPIO1.associatedPins[0].$name            = "B2";
 GPIO1.associatedPins[0].direction        = "INPUT";
 GPIO1.associatedPins[0].assignedPort     = "PORTA";
@@ -77,9 +87,14 @@ GPIO1.associatedPins[1].internalResistor = "PULL_UP";
 GPIO1.associatedPins[1].assignedPort     = "PORTB";
 GPIO1.associatedPins[1].assignedPin      = "3";
 GPIO1.associatedPins[1].pin.$assign      = "PB3";
+GPIO1.associatedPins[2].$name            = "PB21";
+GPIO1.associatedPins[2].direction        = "INPUT";
+GPIO1.associatedPins[2].assignedPort     = "PORTB";
+GPIO1.associatedPins[2].assignedPin      = "21";
+GPIO1.associatedPins[2].internalResistor = "PULL_UP";
 
 GPIO2.$name                          = "LED";
-GPIO2.associatedPins.create(8);
+GPIO2.associatedPins.create(9);
 GPIO2.associatedPins[0].$name        = "LED0";
 GPIO2.associatedPins[0].assignedPort = "PORTB";
 GPIO2.associatedPins[0].assignedPin  = "6";
@@ -87,9 +102,11 @@ GPIO2.associatedPins[0].pin.$assign  = "PB6";
 GPIO2.associatedPins[1].$name        = "LED1";
 GPIO2.associatedPins[1].assignedPort = "PORTA";
 GPIO2.associatedPins[1].assignedPin  = "7";
+GPIO2.associatedPins[1].pin.$assign  = "PA7";
 GPIO2.associatedPins[2].assignedPort = "PORTA";
 GPIO2.associatedPins[2].$name        = "LED2";
 GPIO2.associatedPins[2].assignedPin  = "6";
+GPIO2.associatedPins[2].pin.$assign  = "PA6";
 GPIO2.associatedPins[3].$name        = "LED3";
 GPIO2.associatedPins[3].assignedPort = "PORTA";
 GPIO2.associatedPins[3].assignedPin  = "9";
@@ -110,6 +127,9 @@ GPIO2.associatedPins[7].$name        = "LED7";
 GPIO2.associatedPins[7].assignedPort = "PORTA";
 GPIO2.associatedPins[7].assignedPin  = "12";
 GPIO2.associatedPins[7].pin.$assign  = "PA12";
+GPIO2.associatedPins[8].$name        = "PB22";
+GPIO2.associatedPins[8].assignedPort = "PORTB";
+GPIO2.associatedPins[8].assignedPin  = "22";
 
 SYSCTL.forceDefaultClkConfig = true;
 SYSCTL.peripheral.$assign    = "SYSCTL";
@@ -120,6 +140,7 @@ TIMER1.timerStartTimer             = true;
 TIMER1.event1PublisherChannel      = 1;
 TIMER1.event1ControllerInterruptEn = ["ZERO_EVENT"];
 TIMER1.timerPeriod                 = "2ms";
+TIMER1.peripheral.$assign          = "TIMA0";
 
 UART1.$name                    = "UART_0";
 UART1.enabledInterrupts        = ["RX"];
@@ -138,16 +159,5 @@ ProjectConfig.migrationCondition = true;
  * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
  * re-solve from scratch.
  */
-ADC121.DMA_CHANNEL.peripheral.$suggestSolution = "DMA_CH0";
-ADC121.peripheral.$suggestSolution             = "ADC0";
-ADC121.peripheral.adcPin0.$suggestSolution     = "PA27";
-ADC121.peripheral.adcPin1.$suggestSolution     = "PA26";
-ADC121.peripheral.adcPin2.$suggestSolution     = "PA25";
-ADC121.peripheral.adcPin3.$suggestSolution     = "PA24";
-ADC121.peripheral.adcPin5.$suggestSolution     = "PB24";
-ADC121.peripheral.adcPin6.$suggestSolution     = "PB20";
-ADC121.peripheral.adcPin7.$suggestSolution     = "PA22";
-ADC121.peripheral.adcPin12.$suggestSolution    = "PA14";
-GPIO2.associatedPins[1].pin.$suggestSolution   = "PA7";
-GPIO2.associatedPins[2].pin.$suggestSolution   = "PA6";
-TIMER1.peripheral.$suggestSolution             = "TIMA0";
+GPIO1.associatedPins[2].pin.$suggestSolution = "PB21";
+GPIO2.associatedPins[8].pin.$suggestSolution = "PB22";

@@ -15,7 +15,7 @@ SHELL = cmd.exe
 build-1225677504: ../empty.syscfg
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: SysConfig'
-	"D:/MCU/CCS/ccs/utils/sysconfig_1.24.0/sysconfig_cli.bat" -s "D:/MCU/CCS/mspm0_sdk_2_05_01_00/.metadata/product.json" -d "MSPM0G350X" -p "LQFP-48(PT)" -r "Default" --script "C:/Users/LuZIyu/workspace_ccstheia/8-channel grayscale sensor/empty.syscfg" --context "system" -o "." --compiler ticlang
+	"D:/MCU/CCS/ccs/utils/sysconfig_1.24.0/sysconfig_cli.bat" -s "D:/MCU/CCS/mspm0_sdk_2_05_01_00/.metadata/product.json" -d "MSPM0G350X" -p "LQFP-64(PM)" -r "Default" --script "C:/Users/LuZIyu/workspace_ccstheia/8-channel grayscale sensor/empty.syscfg" --context "system" -o "." --compiler ticlang
 	@echo 'Finished building: "$<"'
 	@echo ' '
 

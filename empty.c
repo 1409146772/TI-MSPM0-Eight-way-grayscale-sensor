@@ -53,6 +53,12 @@ int main(void)
         if (flag) {
             process_avg_and_restart_timer();
         }
+        
+        if( DL_GPIO_readPins(KEY_PB21_PORT, KEY_PB21_PIN) == 0 )
+        {
+            DL_GPIO_setPins(LED_PB22_PORT, LED_PB22_PIN);
+        }
+        else DL_GPIO_clearPins(LED_PB22_PORT, LED_PB22_PIN);
     }
 }
 
