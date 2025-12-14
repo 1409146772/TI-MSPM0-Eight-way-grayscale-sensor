@@ -76,6 +76,10 @@ int main(void)
     /* Setup interrupts on device */
     NVIC_EnableIRQ(ADC12_0_INST_INT_IRQN);
 
+    /* Reset FIFO to ensure no stale data */
+    DL_ADC12_disableFIFO(ADC12_0_INST);
+    DL_ADC12_enableFIFO(ADC12_0_INST);
+
     DL_ADC12_startConversion(ADC12_0_INST);
 
 
@@ -97,9 +101,9 @@ void ADC12_0_INST_IRQHandler(void)
         case DL_ADC12_IIDX_DMA_DONE:
             DL_ADC12_disableConversions(ADC12_0_INST);
 
-for (uint32_t i = 0; i < 960; i++) {
+            for (uint32_t i = 0; i < 8; i++) {
                 printf("gADCSamples[%d] = %d\r\n", i, gADCSamples[i]);
-        }
+            }
 
 
             DL_ADC12_enableConversions(ADC12_0_INST);
