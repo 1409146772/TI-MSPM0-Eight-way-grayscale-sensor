@@ -10,6 +10,7 @@
 
 /* 工程模块头文件 */
 #include "data_process.h"       /* 数据处理函数声明 */
+#include "key.h"
 
 /* =========================
  * 全局变量区域
@@ -45,6 +46,7 @@ int main(void)
 
     /* 使能 ADC12 中断（用于接收 DMA 完成事件） */
     NVIC_EnableIRQ(ADC12_0_INST_INT_IRQN);
+    key_init();
 
     while (1) {
         /* 数据处理部分：当 DMA 完成后，中断会将 flag 置为 1
@@ -53,12 +55,14 @@ int main(void)
         if (flag) {
             process_avg_and_restart_timer();
         }
-        
-        if( DL_GPIO_readPins(KEY_PB21_PORT, KEY_PB21_PIN) == 0 )
         {
-            DL_GPIO_setPins(LED_PB22_PORT, LED_PB22_PIN);
+            uint8_t k = key_scan();
+            if (k == 3) {
+                DL_GPIO_togglePins(LED_PB22_PORT, LED_PB22_PIN);
+            }
         }
-        else DL_GPIO_clearPins(LED_PB22_PORT, LED_PB22_PIN);
+        
+        
     }
 }
 
