@@ -1,7 +1,8 @@
 # FIXED
 
-empty.o: ../empty.c \
- ti_msp_dl_config.h \
+ti/eeprom/emulation_type_b/eeprom_emulation_type_b.o: \
+ ../ti/eeprom/emulation_type_b/eeprom_emulation_type_b.c \
+ ../ti/eeprom/emulation_type_b/eeprom_emulation_type_b.h \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/msp/m0p/mspm0g350x.h \
@@ -74,11 +75,8 @@ empty.o: ../empty.c \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_vref.h \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_wwdt.h \
  D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_interrupt.h \
- D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h \
- ../LED.h ../UART.h \
- C:/Users/LuZIyu/workspace_ccstheia/8-channel\ grayscale\ sensor/ti/eeprom/emulation_type_b/eeprom_emulation_type_b.h \
- ../data_process.h ../key.h
-ti_msp_dl_config.h:
+ D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h
+../ti/eeprom/emulation_type_b/eeprom_emulation_type_b.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/msp/msp.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/DeviceFamily.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/devices/msp/m0p/mspm0g350x.h:
@@ -152,8 +150,3 @@ D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_vref.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/dl_wwdt.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_interrupt.h:
 D:/MCU/CCS/mspm0_sdk_2_05_01_00/source/ti/driverlib/m0p/dl_systick.h:
-../LED.h:
-../UART.h:
-C:/Users/LuZIyu/workspace_ccstheia/8-channel\ grayscale\ sensor/ti/eeprom/emulation_type_b/eeprom_emulation_type_b.h:
-../data_process.h:
-../key.h:

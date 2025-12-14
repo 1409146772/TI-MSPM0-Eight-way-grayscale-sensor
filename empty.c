@@ -3,6 +3,7 @@
 #include "ti_msp_dl_config.h"   /* 设备驱动库配置与外设句柄 */
 #include "LED.h"                /* 可选：LED 指示相关 */
 #include "UART.h"               /* 可选：UART 打印与通信相关 */
+#include "eeprom_emulation_type_b.h"
 
 /* 标准库头文件 */
 #include <stdint.h>             /* 标准整型定义 */
@@ -19,6 +20,7 @@
  * ========================= */
 uint16_t gADCSamples[1000];     /* ADC 采样数据缓冲区（DMA 写入），大小至少覆盖一次采样周期 */
 uint32_t avg[8];                /* 8 个通道的平均值结果（由数据处理模块计算） */
+uint32_t last_avg[8];  
 volatile uint32_t flag = 0;     /* 数据处理标志位：1 表示 DMA 已完成、主循环需要进行处理 */
 
 /* =========================
@@ -33,6 +35,19 @@ int main(void)
 {
     SYSCFG_DL_init();  /* 设备库与系统配置初始化，具体内容由 SysConfig 生成 */
 
+    
+    EEPROM_TypeB_init();
+    
+    for (uint16_t i = 0; i < 8; i++) {
+        uint32_t v = EEPROM_TypeB_readDataItem(i);
+        if (gEEPROMTypeBSearchFlag) {
+            last_avg[i] = v;
+        } else {
+            last_avg[i] = 0;
+        }
+        printf("last_avg[%d] = %d\n", i, last_avg[i]);
+    }
+    printf("**************************\n");
     /* 配置 DMA 源、目标与传输大小
      * 源地址：ADC12 FIFO 地址（由驱动库提供）
      * 目标地址：采样缓冲区首地址 gADCSamples[0]
@@ -59,6 +74,9 @@ int main(void)
             uint8_t k = key_scan();
             if (k == 3) {
                 DL_GPIO_togglePins(LED_PB22_PORT, LED_PB22_PIN);
+                for (uint16_t i = 0; i < 8; i++) {
+                    EEPROM_TypeB_write(i, avg[i]);
+                }
             }
         }
         

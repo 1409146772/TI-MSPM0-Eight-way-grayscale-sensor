@@ -119,4 +119,6 @@ GEN_OPTS__QUOTED :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 . \
+ti/eeprom/emulation_type_a \
+ti/eeprom/emulation_type_b \
 

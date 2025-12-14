@@ -17,6 +17,8 @@ ORDERED_OBJS += \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0g350x_ticlang.o" \
 "./key.o" \
+"./ti/eeprom/emulation_type_a/eeprom_emulation_type_a.o" \
+"./ti/eeprom/emulation_type_b/eeprom_emulation_type_b.o" \
 $(GEN_CMDS__FLAG) \
 -Wl,-ldevice.cmd.genlibs \
 -Wl,-llibc.a \
@@ -29,7 +31,11 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include ti/eeprom/emulation_type_a/subdir_vars.mk
+-include ti/eeprom/emulation_type_b/subdir_vars.mk
 -include subdir_rules.mk
+-include ti/eeprom/emulation_type_a/subdir_rules.mk
+-include ti/eeprom/emulation_type_b/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -141,8 +147,8 @@ huidu_yjian.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "LED.o" "UART.o" "data_process.o" "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "key.o" 
-	-$(RM) "LED.d" "UART.d" "data_process.d" "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "key.d" 
+	-$(RM) "LED.o" "UART.o" "data_process.o" "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "key.o" "ti\eeprom\emulation_type_a\eeprom_emulation_type_a.o" "ti\eeprom\emulation_type_b\eeprom_emulation_type_b.o" 
+	-$(RM) "LED.d" "UART.d" "data_process.d" "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "key.d" "ti\eeprom\emulation_type_a\eeprom_emulation_type_a.d" "ti\eeprom\emulation_type_b\eeprom_emulation_type_b.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
