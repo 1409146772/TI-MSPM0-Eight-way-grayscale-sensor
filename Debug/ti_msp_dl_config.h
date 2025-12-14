@@ -77,6 +77,15 @@ extern "C" {
 
 
 
+/* Defines for TIMER_0 */
+#define TIMER_0_INST                                                     (TIMA0)
+#define TIMER_0_INST_IRQHandler                                 TIMA0_IRQHandler
+#define TIMER_0_INST_INT_IRQN                                   (TIMA0_INT_IRQn)
+#define TIMER_0_INST_LOAD_VALUE                                         (31999U)
+#define TIMER_0_INST_PUB_0_CH                                                (1)
+
+
+
 /* Defines for UART_0 */
 #define UART_0_INST                                                        UART0
 #define UART_0_INST_FREQUENCY                                            4000000
@@ -126,6 +135,7 @@ extern "C" {
 #define ADC12_0_ADCMEM_7                                      DL_ADC12_MEM_IDX_7
 #define ADC12_0_ADCMEM_7_REF                     DL_ADC12_REFERENCE_VOLTAGE_VDDA
 #define ADC12_0_ADCMEM_7_REF_VOLTAGE_V                                       3.3
+#define ADC12_0_INST_SUB_CH                                                  (1)
 #define GPIO_ADC12_0_C0_PORT                                               GPIOA
 #define GPIO_ADC12_0_C0_PIN                                       DL_GPIO_PIN_27
 #define GPIO_ADC12_0_C1_PORT                                               GPIOA
@@ -195,6 +205,7 @@ void SYSCFG_DL_init(void);
 void SYSCFG_DL_initPower(void);
 void SYSCFG_DL_GPIO_init(void);
 void SYSCFG_DL_SYSCTL_init(void);
+void SYSCFG_DL_TIMER_0_init(void);
 void SYSCFG_DL_UART_0_init(void);
 void SYSCFG_DL_ADC12_0_init(void);
 void SYSCFG_DL_DMA_init(void);

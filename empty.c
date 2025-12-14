@@ -60,7 +60,7 @@ int puts(const char *s)
 }
 
 uint16_t gADCSamples[2400];
-
+char flag=0;
 int main(void)
 {
     SYSCFG_DL_init();
@@ -68,7 +68,6 @@ int main(void)
     /* Configure DMA source, destination and size */
     DL_DMA_setSrcAddr(DMA, DMA_CH0_CHAN_ID,
         (uint32_t) DL_ADC12_getFIFOAddress(ADC12_0_INST));
-
     DL_DMA_setDestAddr(DMA, DMA_CH0_CHAN_ID, (uint32_t) &gADCSamples[0]);
 
     DL_DMA_enableChannel(DMA, DMA_CH0_CHAN_ID);
@@ -80,9 +79,9 @@ int main(void)
     DL_ADC12_disableFIFO(ADC12_0_INST);
     DL_ADC12_enableFIFO(ADC12_0_INST);
 
-    DL_ADC12_startConversion(ADC12_0_INST);
+    //DL_ADC12_startConversion(ADC12_0_INST);
 
-
+    
     //printf("UART0 printf redirect ready\n");
 
     while (1) {
@@ -99,15 +98,16 @@ void ADC12_0_INST_IRQHandler(void)
 {
     switch (DL_ADC12_getPendingInterrupt(ADC12_0_INST)) {
         case DL_ADC12_IIDX_DMA_DONE:
-            DL_ADC12_disableConversions(ADC12_0_INST);
+            //DL_ADC12_disableConversions(ADC12_0_INST);
+            DL_TimerA_stopCounter(TIMER_0_INST);
+            // for (uint32_t i = 0; i < 8; i++) {
+            //     printf("gADCSamples[%d] = %d\r\n", i, gADCSamples[i]);
+            // }
+            flag=1;
 
-            for (uint32_t i = 0; i < 8; i++) {
-                printf("gADCSamples[%d] = %d\r\n", i, gADCSamples[i]);
-            }
-
-
-            DL_ADC12_enableConversions(ADC12_0_INST);
-            DL_ADC12_startConversion(ADC12_0_INST);
+            DL_TimerA_startCounter(TIMER_0_INST);
+            // DL_ADC12_enableConversions(ADC12_0_INST);
+            // DL_ADC12_startConversion(ADC12_0_INST);
             break;
         default:
             break;
