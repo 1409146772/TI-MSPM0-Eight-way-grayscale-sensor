@@ -30,13 +30,20 @@ typedef void (*KeyCallback_t)(KeyEvent_t event);
  * @brief 初始化按键模块
  * 
  * 初始化定时器并开启中断，准备进行按键扫描
- */
+  */
 void key_init(void);
 
 /**
- * @brief 注册按键回调函数
+ * @brief 获取系统当前运行时间（毫秒）
  * 
- * @param key_id 按键ID (KEY_ID_B1 或 KEY_ID_B2)
+ * 用于非阻塞式延时、闪烁控制等时间相关逻辑。
+ */
+uint32_t key_get_tick(void);
+
+/**
+ * @brief 注册按键回调函数
+ */
+ /* @param key_id 按键ID (KEY_ID_B1 或 KEY_ID_B2)
  * @param cb 回调函数指针
  */
 void key_register_callback(KeyId_t key_id, KeyCallback_t cb);

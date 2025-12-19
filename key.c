@@ -48,6 +48,18 @@ static KeyControl_t gKeyControls[KEY_ID_MAX] = {
     }
 };
 
+/* Global system tick counter */
+/* 全局系统毫秒计数器，在定时器中断中递增 */
+volatile uint32_t g_system_tick = 0;
+
+/**
+ * @brief 获取系统当前运行时间（毫秒）
+ */
+uint32_t key_get_tick(void)
+{
+    return g_system_tick;
+}
+
 /**
  * @brief 初始化按键模块
  */
@@ -79,6 +91,7 @@ void KEY_TIMER_1_INST_IRQHandler(void)
 {
     switch (DL_Timer_getPendingInterrupt(KEY_TIMER_1_INST)) {
         case DL_TIMER_IIDX_ZERO:
+            g_system_tick++; /* 系统Tick计数递增 (1ms) */
             /* 遍历所有注册的按键 */
             for (int i = 0; i < KEY_ID_MAX; i++) {
                 KeyControl_t *key = &gKeyControls[i];

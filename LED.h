@@ -15,6 +15,10 @@ void LED_init(void);
 // 运行LED流水灯
 void LED_run_flow(void);
 
+// Set LED state (1: ON, 0: OFF)
+/* 设置指定LED的状态 (1: 亮, 0: 灭) */
+void LED_set(uint8_t index, uint8_t state);
+
 void delay_ms(unsigned int ms);
 
 #endif /* LED_H */

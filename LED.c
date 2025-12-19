@@ -51,3 +51,12 @@ void LED_run_flow(void) {
         DL_GPIO_clearPins(leds[i].port, leds[i].pin);  // 熄灭当前LED
     }
 }
+
+void LED_set(uint8_t index, uint8_t state) {
+    if (index >= 8) return;
+    if (state) {
+        DL_GPIO_setPins(leds[index].port, leds[index].pin);
+    } else {
+        DL_GPIO_clearPins(leds[index].port, leds[index].pin);
+    }
+}

@@ -24,6 +24,12 @@ const UART1  = UART.addInstance();
 /**
  * Write custom configuration values to the imported modules.
  */
+const divider9       = system.clockTree["UDIV"];
+divider9.divideValue = 2;
+
+const mux8       = system.clockTree["HSCLKMUX"];
+mux8.inputSelect = "HSCLKMUX_SYSPLL2X";
+
 ADC121.$name                             = "ADC12_0";
 ADC121.adcMem1chansel                    = "DL_ADC12_INPUT_CHAN_1";
 ADC121.adcMem2chansel                    = "DL_ADC12_INPUT_CHAN_2";
@@ -133,7 +139,7 @@ TIMER1.timerMode                   = "PERIODIC";
 TIMER1.timerStartTimer             = true;
 TIMER1.event1PublisherChannel      = 1;
 TIMER1.event1ControllerInterruptEn = ["ZERO_EVENT"];
-TIMER1.timerPeriod                 = "2ms";
+TIMER1.timerPeriod                 = "1ms";
 TIMER1.peripheral.$assign          = "TIMA0";
 
 TIMER2.$name       = "KEY_TIMER_1";
