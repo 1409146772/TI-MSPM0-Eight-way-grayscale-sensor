@@ -141,8 +141,6 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 
     DL_GPIO_initDigitalOutput(LED_LED7_IOMUX);
 
-    DL_GPIO_initDigitalOutput(LED_PB22_IOMUX);
-
     DL_GPIO_clearPins(GPIOA, LED_LED1_PIN |
 		LED_LED2_PIN |
 		LED_LED3_PIN |
@@ -157,10 +155,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		LED_LED5_PIN |
 		LED_LED6_PIN |
 		LED_LED7_PIN);
-    DL_GPIO_clearPins(GPIOB, LED_LED0_PIN |
-		LED_PB22_PIN);
-    DL_GPIO_enableOutput(GPIOB, LED_LED0_PIN |
-		LED_PB22_PIN);
+    DL_GPIO_clearPins(GPIOB, LED_LED0_PIN);
+    DL_GPIO_enableOutput(GPIOB, LED_LED0_PIN);
 
 }
 
@@ -195,7 +191,7 @@ static const DL_TimerA_ClockConfig gTIMER_0ClockConfig = {
 
 /*
  * Timer load value (where the counter starts from) is calculated as (timerPeriod * timerClockFreq) - 1
- * TIMER_0_INST_LOAD_VALUE = (1ms * 32000000 Hz) - 1
+ * TIMER_0_INST_LOAD_VALUE = (100us * 32000000 Hz) - 1
  */
 static const DL_TimerA_TimerConfig gTIMER_0TimerConfig = {
     .period     = TIMER_0_INST_LOAD_VALUE,

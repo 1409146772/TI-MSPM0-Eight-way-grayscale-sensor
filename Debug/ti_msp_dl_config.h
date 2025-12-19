@@ -81,7 +81,7 @@ extern "C" {
 #define TIMER_0_INST                                                     (TIMA0)
 #define TIMER_0_INST_IRQHandler                                 TIMA0_IRQHandler
 #define TIMER_0_INST_INT_IRQN                                   (TIMA0_INT_IRQn)
-#define TIMER_0_INST_LOAD_VALUE                                         (31999U)
+#define TIMER_0_INST_LOAD_VALUE                                          (3199U)
 #define TIMER_0_INST_PUB_0_CH                                                (1)
 /* Defines for KEY_TIMER_1 */
 #define KEY_TIMER_1_INST                                                 (TIMA1)
@@ -203,10 +203,6 @@ extern "C" {
 #define LED_LED7_PORT                                                    (GPIOA)
 #define LED_LED7_PIN                                            (DL_GPIO_PIN_12)
 #define LED_LED7_IOMUX                                           (IOMUX_PINCM34)
-/* Defines for PB22: GPIOB.22 with pinCMx 50 on package pin 21 */
-#define LED_PB22_PORT                                                    (GPIOB)
-#define LED_PB22_PIN                                            (DL_GPIO_PIN_22)
-#define LED_PB22_IOMUX                                           (IOMUX_PINCM50)
 
 /* clang-format on */
 

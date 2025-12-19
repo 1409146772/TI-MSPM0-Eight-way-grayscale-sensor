@@ -1,4 +1,16 @@
 #include "LED.h"
+#include "key.h"
+
+// System State Definitions (copied from empty.c for reference in LED logic)
+/* 注意：为了解耦，这里使用数值或可以在头文件中共享枚举定义。
+ * 简单起见，我们假设传入的 system_state 值为：
+ * 0: STATE_NORMAL
+ * 1: STATE_CALIB_BLACK
+ * 2: STATE_CALIB_WHITE
+ */
+#define STATE_NORMAL      0
+#define STATE_CALIB_BLACK 1
+#define STATE_CALIB_WHITE 2
 
 //自定义延时（不精确）
 void delay_ms(unsigned int ms)
@@ -58,5 +70,47 @@ void LED_set(uint8_t index, uint8_t state) {
         DL_GPIO_setPins(leds[index].port, leds[index].pin);
     } else {
         DL_GPIO_clearPins(leds[index].port, leds[index].pin);
+    }
+}
+
+void LED_update(uint32_t system_state, uint32_t *avg, uint32_t *white_threshold, uint32_t *black_threshold) {
+    if (system_state == STATE_NORMAL) {
+        /* Real-time detection */
+        for (int i = 0; i < 8; i++) {
+            if (avg[i] >= white_threshold[i]) {
+                LED_set(i, 0);
+            } else if (avg[i] <= black_threshold[i]) {
+                LED_set(i, 1);
+            }
+            /* Hysteresis: Keep previous state if in between */
+        }
+    } else {
+        /* Calibration Mode: Flash LEDs */
+        uint32_t tick = key_get_tick();
+        
+        if (system_state == STATE_CALIB_BLACK) {
+            /* 黑色校准：所有LED同步闪烁 */
+            /* 500ms周期：250ms亮，250ms灭 */
+            uint8_t state = (tick % 1000) < 500 ? 1 : 0;
+            for (int i = 0; i < 8; i++) {
+                LED_set(i, state);
+            }
+        } else if (system_state == STATE_CALIB_WHITE) {
+            /* 白色校准：流水灯效果 */
+            /* 设定每个LED点亮时间为100ms，8个LED循环周期为800ms */
+            int active_index = (tick / 100) % 8;
+            for (int i = 0; i < 8; i++) {
+                if (i == active_index) {
+                    LED_set(i, 1);
+                } else {
+                    LED_set(i, 0);
+                }
+            }
+        } else {
+            /* 其他状态：熄灭所有LED */
+            for (int i = 0; i < 8; i++) {
+                LED_set(i, 0);
+            }
+        }
     }
 }

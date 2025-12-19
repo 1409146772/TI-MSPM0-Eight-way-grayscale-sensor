@@ -71,27 +71,6 @@ void save_parameters(void) {
     printf("Parameters saved to EEPROM.\n");
 }
 
-void update_leds(void) {
-    if (system_state == STATE_NORMAL) {
-        /* Real-time detection */
-        for (int i = 0; i < 8; i++) {
-            if (avg[i] >= white_threshold[i]) {
-                LED_set(i, 0);
-            } else if (avg[i] <= black_threshold[i]) {
-                LED_set(i, 1);
-            }
-            /* Hysteresis: Keep previous state if in between */
-        }
-    } else {
-        /* Calibration Mode: Flash LEDs */
-        /* 500ms period: 250ms ON, 250ms OFF */
-        uint32_t tick = key_get_tick();
-        uint8_t state = (tick % 500) < 250 ? 1 : 0;
-        for (int i = 0; i < 8; i++) {
-            LED_set(i, state);
-        }
-    }
-}
 
 /* =========================
  * 按键回调函数
@@ -222,7 +201,7 @@ int main(void)
         if (flag) {
             process_avg_and_restart_timer();
             /* Update LEDs based on state and values */
-            update_leds();
+            LED_update((uint32_t)system_state, avg, white_threshold, black_threshold);
         }
         
         

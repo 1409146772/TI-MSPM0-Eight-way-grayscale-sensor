@@ -94,7 +94,7 @@ GPIO1.associatedPins[1].assignedPin      = "3";
 GPIO1.associatedPins[1].$name            = "B2";
 
 GPIO2.$name                          = "LED";
-GPIO2.associatedPins.create(9);
+GPIO2.associatedPins.create(8);
 GPIO2.associatedPins[0].$name        = "LED0";
 GPIO2.associatedPins[0].assignedPort = "PORTB";
 GPIO2.associatedPins[0].assignedPin  = "6";
@@ -127,9 +127,6 @@ GPIO2.associatedPins[7].$name        = "LED7";
 GPIO2.associatedPins[7].assignedPort = "PORTA";
 GPIO2.associatedPins[7].assignedPin  = "12";
 GPIO2.associatedPins[7].pin.$assign  = "PA12";
-GPIO2.associatedPins[8].$name        = "PB22";
-GPIO2.associatedPins[8].assignedPort = "PORTB";
-GPIO2.associatedPins[8].assignedPin  = "22";
 
 SYSCTL.forceDefaultClkConfig = true;
 SYSCTL.peripheral.$assign    = "SYSCTL";
@@ -139,7 +136,7 @@ TIMER1.timerMode                   = "PERIODIC";
 TIMER1.timerStartTimer             = true;
 TIMER1.event1PublisherChannel      = 1;
 TIMER1.event1ControllerInterruptEn = ["ZERO_EVENT"];
-TIMER1.timerPeriod                 = "1ms";
+TIMER1.timerPeriod                 = "100us";
 TIMER1.peripheral.$assign          = "TIMA0";
 
 TIMER2.$name       = "KEY_TIMER_1";
@@ -166,5 +163,4 @@ ProjectConfig.migrationCondition = true;
  */
 GPIO1.associatedPins[0].pin.$suggestSolution = "PA8";
 GPIO1.associatedPins[1].pin.$suggestSolution = "PB3";
-GPIO2.associatedPins[8].pin.$suggestSolution = "PB22";
 TIMER2.peripheral.$suggestSolution           = "TIMA1";
