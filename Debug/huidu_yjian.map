@@ -1,10 +1,10 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.3                      
 ******************************************************************************
->> Linked Sun Dec 14 21:49:12 2025
+>> Linked Tue Dec 16 22:49:53 2025
 
 OUTPUT FILE NAME:   <huidu_yjian.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00001d95
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00001d91
 
 
 MEMORY CONFIGURATION
@@ -67,58 +67,59 @@ section   page    origin      length       input sections
                   000017c4    0000006c     ti_msp_dl_config.o (.text.SYSCFG_DL_UART_0_init)
                   00001830    00000062     libc.a : memset16.S.obj (.text:memset)
                   00001892    00000002     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_ldiv0)
-                  00001894    0000005c     ti_msp_dl_config.o (.text.SYSCFG_DL_GPIO_init)
-                  000018f0    0000005c     key.o (.text.key_scan)
-                  0000194c    0000005c     libc.a : printf.c.obj (.text.printf)
-                  000019a8    0000004c     driverlib.a : dl_dma.o (.text.DL_DMA_initChannel)
-                  000019f4    0000004c     libc.a : cpy_tbl.c.obj (.text.copy_in)
-                  00001a40    0000004c            : autoinit.c.obj (.text:__TI_auto_init_nopinit)
-                  00001a8c    00000048     driverlib.a : dl_uart.o (.text.DL_UART_init)
-                  00001ad4    00000048     ti_msp_dl_config.o (.text.SYSCFG_DL_initPower)
-                  00001b1c    00000040     driverlib.a : dl_adc12.o (.text.DL_ADC12_setClockConfig)
-                  00001b5c    00000040     eeprom_emulation_type_b.o (.text.EEPROM_TypeB_write)
-                  00001b9c    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_SYSCTL_init)
-                  00001bdc    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_TIMER_0_init)
-                  00001c1c    00000040     libclang_rt.builtins.a : aeabi_uidivmod.S.obj (.text.__aeabi_uidivmod)
-                  00001c5c    00000040     libc.a : atoi.c.obj (.text.atoi)
-                  00001c9c    00000040     UART.o (.text.fputs)
-                  00001cdc    0000003a     libclang_rt.builtins.a : muldsi3.S.obj (.text.__muldsi3)
-                  00001d16    00000002     libc.a : _lock.c.obj (.text._nop)
-                  00001d18    0000002c     ti_msp_dl_config.o (.text.SYSCFG_DL_init)
-                  00001d44    00000028     empty.o (.text.ADC0_IRQHandler)
-                  00001d6c    00000028     driverlib.a : dl_flashctl.o (.text.DL_FlashCTL_programMemoryFromRAM64WithECCGenerated)
-                  00001d94    00000028     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
-                  00001dbc    00000024     ti_msp_dl_config.o (.text.SYSCFG_DL_DMA_CH0_init)
-                  00001de0    00000024     libclang_rt.builtins.a : muldi3.S.obj (.text.__muldi3)
-                  00001e04    00000022     libc.a : memccpy.c.obj (.text.memccpy)
-                  00001e26    00000002     key.o (.text.key_init)
-                  00001e28    00000020     driverlib.a : dl_uart.o (.text.DL_UART_transmitDataBlocking)
-                  00001e48    0000001e     libclang_rt.builtins.a : ashldi3.S.obj (.text.__ashldi3)
-                  00001e66    00000002     --HOLE-- [fill = 0]
-                  00001e68    0000001c     driverlib.a : dl_timer.o (.text.DL_Timer_setClockConfig)
-                  00001e84    00000018                 : dl_flashctl.o (.text.DL_FlashCTL_eraseMemoryFromRAM)
-                  00001e9c    00000014     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
-                  00001eb0    00000014     UART.o (.text.fputc)
-                  00001ec4    00000012     driverlib.a : dl_uart.o (.text.DL_UART_setClockConfig)
-                  00001ed6    00000012     libc.a : copy_decompress_none.c.obj (.text:decompress:none)
-                  00001ee8    00000010            : wcslen.c.obj (.text.wcslen)
-                  00001ef8    00000010            : copy_zero_init.c.obj (.text:decompress:ZI)
-                  00001f08    0000000e     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
-                  00001f16    0000000e     libc.a : _printfi.c.obj (.text.strlen)
-                  00001f24    0000000c     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
-                  00001f30    0000000a     driverlib.a : dl_common.o (.text.DL_Common_delayCycles)
-                  00001f3a    00000008     ti_msp_dl_config.o (.text.SYSCFG_DL_DMA_init)
-                  00001f42    00000002     --HOLE-- [fill = 0]
-                  00001f44    00000008     libc.a : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
-                  00001f4c    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
-                  00001f54    00000008     libc.a : printf.c.obj (.text._outc)
-                  00001f5c    00000008            : printf.c.obj (.text._outs)
-                  00001f64    00000006            : exit.c.obj (.text:abort)
-                  00001f6a    00000004     libsysbm.a : hostexit.c.obj (.text.HOSTexit)
-                  00001f6e    00000004     startup_mspm0g350x_ticlang.o (.text.Reset_Handler)
-                  00001f72    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
-                  00001f76    00000002     --HOLE-- [fill = 0]
-                  00001f78    00000010     driverlib.a : dl_flashctl.o (.tramp.DL_FlashCTL_executeCommandFromRAM.1)
+                  00001894    0000005c     key.o (.text.key_scan)
+                  000018f0    0000005c     libc.a : printf.c.obj (.text.printf)
+                  0000194c    00000058     ti_msp_dl_config.o (.text.SYSCFG_DL_GPIO_init)
+                  000019a4    0000004c     driverlib.a : dl_dma.o (.text.DL_DMA_initChannel)
+                  000019f0    0000004c     libc.a : cpy_tbl.c.obj (.text.copy_in)
+                  00001a3c    0000004c            : autoinit.c.obj (.text:__TI_auto_init_nopinit)
+                  00001a88    00000048     driverlib.a : dl_uart.o (.text.DL_UART_init)
+                  00001ad0    00000048     ti_msp_dl_config.o (.text.SYSCFG_DL_initPower)
+                  00001b18    00000040     driverlib.a : dl_adc12.o (.text.DL_ADC12_setClockConfig)
+                  00001b58    00000040     eeprom_emulation_type_b.o (.text.EEPROM_TypeB_write)
+                  00001b98    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_SYSCTL_init)
+                  00001bd8    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_TIMER_0_init)
+                  00001c18    00000040     libclang_rt.builtins.a : aeabi_uidivmod.S.obj (.text.__aeabi_uidivmod)
+                  00001c58    00000040     libc.a : atoi.c.obj (.text.atoi)
+                  00001c98    00000040     UART.o (.text.fputs)
+                  00001cd8    0000003a     libclang_rt.builtins.a : muldsi3.S.obj (.text.__muldsi3)
+                  00001d12    00000002     libc.a : _lock.c.obj (.text._nop)
+                  00001d14    0000002c     ti_msp_dl_config.o (.text.SYSCFG_DL_init)
+                  00001d40    00000028     empty.o (.text.ADC0_IRQHandler)
+                  00001d68    00000028     driverlib.a : dl_flashctl.o (.text.DL_FlashCTL_programMemoryFromRAM64WithECCGenerated)
+                  00001d90    00000028     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
+                  00001db8    00000024     ti_msp_dl_config.o (.text.SYSCFG_DL_DMA_CH0_init)
+                  00001ddc    00000024     libclang_rt.builtins.a : muldi3.S.obj (.text.__muldi3)
+                  00001e00    00000022     libc.a : memccpy.c.obj (.text.memccpy)
+                  00001e22    00000002     key.o (.text.key_init)
+                  00001e24    00000020     driverlib.a : dl_uart.o (.text.DL_UART_transmitDataBlocking)
+                  00001e44    0000001e     libclang_rt.builtins.a : ashldi3.S.obj (.text.__ashldi3)
+                  00001e62    00000002     --HOLE-- [fill = 0]
+                  00001e64    0000001c     driverlib.a : dl_timer.o (.text.DL_Timer_setClockConfig)
+                  00001e80    00000018                 : dl_flashctl.o (.text.DL_FlashCTL_eraseMemoryFromRAM)
+                  00001e98    00000014     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
+                  00001eac    00000014     UART.o (.text.fputc)
+                  00001ec0    00000012     driverlib.a : dl_uart.o (.text.DL_UART_setClockConfig)
+                  00001ed2    00000012     libc.a : copy_decompress_none.c.obj (.text:decompress:none)
+                  00001ee4    00000010            : wcslen.c.obj (.text.wcslen)
+                  00001ef4    00000010            : copy_zero_init.c.obj (.text:decompress:ZI)
+                  00001f04    0000000e     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
+                  00001f12    0000000e     libc.a : _printfi.c.obj (.text.strlen)
+                  00001f20    0000000c     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
+                  00001f2c    0000000a     driverlib.a : dl_common.o (.text.DL_Common_delayCycles)
+                  00001f36    00000008     ti_msp_dl_config.o (.text.SYSCFG_DL_DMA_init)
+                  00001f3e    00000002     --HOLE-- [fill = 0]
+                  00001f40    00000008     libc.a : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
+                  00001f48    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  00001f50    00000008     libc.a : printf.c.obj (.text._outc)
+                  00001f58    00000008            : printf.c.obj (.text._outs)
+                  00001f60    00000006            : exit.c.obj (.text:abort)
+                  00001f66    00000004     libsysbm.a : hostexit.c.obj (.text.HOSTexit)
+                  00001f6a    00000004     startup_mspm0g350x_ticlang.o (.text.Reset_Handler)
+                  00001f6e    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  00001f72    00000002     --HOLE-- [fill = 0]
+                  00001f74    00000010     driverlib.a : dl_flashctl.o (.tramp.DL_FlashCTL_executeCommandFromRAM.1)
+                  00001f84    00000004     --HOLE-- [fill = 0]
 
 .TI.ramfunc 
 *          0    00001f88    00000060     RUN ADDR = 202009d8
@@ -188,13 +189,13 @@ MODULE SUMMARY
        ------                         ----   -------   -------
     .\
        empty.o                        488    19        2068   
-       ti_msp_dl_config.o             680    67        188    
+       ti_msp_dl_config.o             676    67        188    
        data_process.o                 408    16        0      
        startup_mspm0g350x_ticlang.o   6      192       0      
        key.o                          94     0         1      
        UART.o                         84     0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         1760   294       2257   
+       Total:                         1756   294       2257   
                                                               
     .\ti\eeprom\emulation_type_b\
        eeprom_emulation_type_b.o      1864   0         7      
@@ -255,7 +256,7 @@ MODULE SUMMARY
        Stack:                         0      0         512    
        Linker Generated:              0      98        0      
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   8066   683       3028   
+       Grand Total:                   8062   683       3028   
 
 
 LINKER GENERATED COPY TABLES
@@ -281,8 +282,8 @@ callee name               trampoline name
    callee addr  tramp addr   call addr  call info
 --------------  -----------  ---------  ----------------
 DL_FlashCTL_executeCommandFromRAM  $Tramp$TT$L$PI$$DL_FlashCTL_executeCommandFromRAM
-   202009d9     00001f78     00001d84   driverlib.a : dl_flashctl.o (.text.DL_FlashCTL_programMemoryFromRAM64WithECCGenerated)
-                             00001e92               : dl_flashctl.o (.text.DL_FlashCTL_eraseMemoryFromRAM)
+   202009d9     00001f74     00001d80   driverlib.a : dl_flashctl.o (.text.DL_FlashCTL_programMemoryFromRAM64WithECCGenerated)
+                             00001e8e               : dl_flashctl.o (.text.DL_FlashCTL_eraseMemoryFromRAM)
 
 [1 trampolines]
 [2 trampoline calls]
@@ -292,23 +293,23 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                                              
 -------   ----                                              
-00001d45  ADC0_IRQHandler                                   
+00001d41  ADC0_IRQHandler                                   
 00001507  ADC1_IRQHandler                                   
 00001507  AES_IRQHandler                                    
-00001f6a  C$$EXIT                                           
+00001f66  C$$EXIT                                           
 00001507  CANFD0_IRQHandler                                 
 00001507  DAC0_IRQHandler                                   
-00001b1d  DL_ADC12_setClockConfig                           
-00001f31  DL_Common_delayCycles                             
-000019a9  DL_DMA_initChannel                                
-00001e85  DL_FlashCTL_eraseMemoryFromRAM                    
-00001d6d  DL_FlashCTL_programMemoryFromRAM64WithECCGenerated
+00001b19  DL_ADC12_setClockConfig                           
+00001f2d  DL_Common_delayCycles                             
+000019a5  DL_DMA_initChannel                                
+00001e81  DL_FlashCTL_eraseMemoryFromRAM                    
+00001d69  DL_FlashCTL_programMemoryFromRAM64WithECCGenerated
 00001225  DL_FlashCTL_unprotectSector                       
 0000113d  DL_Timer_initTimerMode                            
-00001e69  DL_Timer_setClockConfig                           
-00001a8d  DL_UART_init                                      
-00001ec5  DL_UART_setClockConfig                            
-00001e29  DL_UART_transmitDataBlocking                      
+00001e65  DL_Timer_setClockConfig                           
+00001a89  DL_UART_init                                      
+00001ec1  DL_UART_setClockConfig                            
+00001e25  DL_UART_transmitDataBlocking                      
 00001507  DMA_IRQHandler                                    
 00001507  Default_Handler                                   
 00001645  EEPROM_TypeB_eraseAllGroups                       
@@ -317,30 +318,30 @@ address   name
 0000103d  EEPROM_TypeB_init                                 
 00001755  EEPROM_TypeB_readDataItem                         
 00000929  EEPROM_TypeB_transferDataItem                     
-00001b5d  EEPROM_TypeB_write                                
+00001b59  EEPROM_TypeB_write                                
 00000f2d  EEPROM_TypeB_writeDataItem                        
 00001507  GROUP0_IRQHandler                                 
 00001507  GROUP1_IRQHandler                                 
-00001f6b  HOSTexit                                          
+00001f67  HOSTexit                                          
 00001507  HardFault_Handler                                 
 00001507  I2C0_IRQHandler                                   
 00001507  I2C1_IRQHandler                                   
 00001507  NMI_Handler                                       
 00001507  PendSV_Handler                                    
 00001507  RTC_IRQHandler                                    
-00001f6f  Reset_Handler                                     
+00001f6b  Reset_Handler                                     
 00001507  SPI0_IRQHandler                                   
 00001507  SPI1_IRQHandler                                   
 00001507  SVC_Handler                                       
 000012fd  SYSCFG_DL_ADC12_0_init                            
-00001dbd  SYSCFG_DL_DMA_CH0_init                            
-00001f3b  SYSCFG_DL_DMA_init                                
-00001895  SYSCFG_DL_GPIO_init                               
-00001b9d  SYSCFG_DL_SYSCTL_init                             
-00001bdd  SYSCFG_DL_TIMER_0_init                            
+00001db9  SYSCFG_DL_DMA_CH0_init                            
+00001f37  SYSCFG_DL_DMA_init                                
+0000194d  SYSCFG_DL_GPIO_init                               
+00001b99  SYSCFG_DL_SYSCTL_init                             
+00001bd9  SYSCFG_DL_TIMER_0_init                            
 000017c5  SYSCFG_DL_UART_0_init                             
-00001d19  SYSCFG_DL_init                                    
-00001ad5  SYSCFG_DL_initPower                               
+00001d15  SYSCFG_DL_init                                    
+00001ad1  SYSCFG_DL_initPower                               
 00001507  SysTick_Handler                                   
 00001507  TIMA0_IRQHandler                                  
 00001507  TIMA1_IRQHandler                                  
@@ -369,62 +370,62 @@ address   name
 000021d4  __TI_CINIT_Warm                                   
 000021b0  __TI_Handler_Table_Base                           
 000021bc  __TI_Handler_Table_Limit                          
-00001a41  __TI_auto_init_nopinit                            
+00001a3d  __TI_auto_init_nopinit                            
 000016d9  __TI_decompress_lzss                              
-00001ed7  __TI_decompress_none                              
+00001ed3  __TI_decompress_none                              
 ffffffff  __TI_pprof_out_hndl                               
 000000c1  __TI_printfi_nofloat                              
 ffffffff  __TI_prof_data_size                               
 ffffffff  __TI_prof_data_start                              
 00000000  __TI_static_base__                                
 000021d8  __TI_table_binit                                  
-00001ef9  __TI_zero_init                                    
+00001ef5  __TI_zero_init                                    
 00001ff0  __aeabi_ctype_table_                              
 00001ff0  __aeabi_ctype_table_C                             
 202009bc  __aeabi_errno                                     
-00001f45  __aeabi_errno_addr                                
+00001f41  __aeabi_errno_addr                                
 00001643  __aeabi_idiv0                                     
 00001893  __aeabi_ldiv0                                     
-00001e49  __aeabi_llsl                                      
-00001de1  __aeabi_lmul                                      
-00001f25  __aeabi_memclr                                    
-00001f25  __aeabi_memclr4                                   
-00001f25  __aeabi_memclr8                                   
-00001f4d  __aeabi_memcpy                                    
-00001f4d  __aeabi_memcpy4                                   
-00001f4d  __aeabi_memcpy8                                   
-00001f09  __aeabi_memset                                    
-00001f09  __aeabi_memset4                                   
-00001f09  __aeabi_memset8                                   
-00001c1d  __aeabi_uidiv                                     
-00001c1d  __aeabi_uidivmod                                  
-00001e9d  __aeabi_uldivmod                                  
-00001e49  __ashldi3                                         
+00001e45  __aeabi_llsl                                      
+00001ddd  __aeabi_lmul                                      
+00001f21  __aeabi_memclr                                    
+00001f21  __aeabi_memclr4                                   
+00001f21  __aeabi_memclr8                                   
+00001f49  __aeabi_memcpy                                    
+00001f49  __aeabi_memcpy4                                   
+00001f49  __aeabi_memcpy8                                   
+00001f05  __aeabi_memset                                    
+00001f05  __aeabi_memset4                                   
+00001f05  __aeabi_memset8                                   
+00001c19  __aeabi_uidiv                                     
+00001c19  __aeabi_uidivmod                                  
+00001e99  __aeabi_uldivmod                                  
+00001e45  __ashldi3                                         
 000021d8  __binit__                                         
 UNDEFED   __mpu_init                                        
-00001de1  __muldi3                                          
-00001cdd  __muldsi3                                         
+00001ddd  __muldi3                                          
+00001cd9  __muldsi3                                         
 20207e00  __stack                                           
 20200000  __start___llvm_prf_bits                           
 20200000  __start___llvm_prf_cnts                           
 20200000  __stop___llvm_prf_bits                            
 20200000  __stop___llvm_prf_cnts                            
 00001465  __udivmoddi4                                      
-00001d95  _c_int00_noargs                                   
+00001d91  _c_int00_noargs                                   
 202008cc  _ftable                                           
 202009c0  _lock                                             
-00001d17  _nop                                              
+00001d13  _nop                                              
 UNDEFED   _system_post_cinit                                
-00001f73  _system_pre_init                                  
+00001f6f  _system_pre_init                                  
 202009c4  _unlock                                           
-00001f65  abort                                             
-00001c5d  atoi                                              
+00001f61  abort                                             
+00001c59  atoi                                              
 2020088c  avg                                               
 000021d8  binit                                             
-000019f5  copy_in                                           
+000019f1  copy_in                                           
 202009c8  flag                                              
-00001eb1  fputc                                             
-00001c9d  fputs                                             
+00001ead  fputc                                             
+00001c99  fputs                                             
 20200000  gADCSamples                                       
 202009cc  gActiveDataItemNum                                
 202009ce  gActiveGroupNum                                   
@@ -433,16 +434,16 @@ UNDEFED   _system_post_cinit
 202009d2  gEEPROMTypeBTransferInProgressFlag                
 202007d0  gTIMER_0Backup                                    
 00000000  interruptVectors                                  
-00001e27  key_init                                          
-000018f1  key_scan                                          
+00001e23  key_init                                          
+00001895  key_scan                                          
 202008ac  last_avg                                          
 00000bd5  main                                              
-00001e05  memccpy                                           
+00001e01  memccpy                                           
 000015a9  memcpy                                            
 00001831  memset                                            
-0000194d  printf                                            
+000018f1  printf                                            
 00000d95  process_avg_and_restart_timer                     
-00001ee9  wcslen                                            
+00001ee5  wcslen                                            
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -510,61 +511,61 @@ address   name
 000017c5  SYSCFG_DL_UART_0_init                             
 00001831  memset                                            
 00001893  __aeabi_ldiv0                                     
-00001895  SYSCFG_DL_GPIO_init                               
-000018f1  key_scan                                          
-0000194d  printf                                            
-000019a9  DL_DMA_initChannel                                
-000019f5  copy_in                                           
-00001a41  __TI_auto_init_nopinit                            
-00001a8d  DL_UART_init                                      
-00001ad5  SYSCFG_DL_initPower                               
-00001b1d  DL_ADC12_setClockConfig                           
-00001b5d  EEPROM_TypeB_write                                
-00001b9d  SYSCFG_DL_SYSCTL_init                             
-00001bdd  SYSCFG_DL_TIMER_0_init                            
-00001c1d  __aeabi_uidiv                                     
-00001c1d  __aeabi_uidivmod                                  
-00001c5d  atoi                                              
-00001c9d  fputs                                             
-00001cdd  __muldsi3                                         
-00001d17  _nop                                              
-00001d19  SYSCFG_DL_init                                    
-00001d45  ADC0_IRQHandler                                   
-00001d6d  DL_FlashCTL_programMemoryFromRAM64WithECCGenerated
-00001d95  _c_int00_noargs                                   
-00001dbd  SYSCFG_DL_DMA_CH0_init                            
-00001de1  __aeabi_lmul                                      
-00001de1  __muldi3                                          
-00001e05  memccpy                                           
-00001e27  key_init                                          
-00001e29  DL_UART_transmitDataBlocking                      
-00001e49  __aeabi_llsl                                      
-00001e49  __ashldi3                                         
-00001e69  DL_Timer_setClockConfig                           
-00001e85  DL_FlashCTL_eraseMemoryFromRAM                    
-00001e9d  __aeabi_uldivmod                                  
-00001eb1  fputc                                             
-00001ec5  DL_UART_setClockConfig                            
-00001ed7  __TI_decompress_none                              
-00001ee9  wcslen                                            
-00001ef9  __TI_zero_init                                    
-00001f09  __aeabi_memset                                    
-00001f09  __aeabi_memset4                                   
-00001f09  __aeabi_memset8                                   
-00001f25  __aeabi_memclr                                    
-00001f25  __aeabi_memclr4                                   
-00001f25  __aeabi_memclr8                                   
-00001f31  DL_Common_delayCycles                             
-00001f3b  SYSCFG_DL_DMA_init                                
-00001f45  __aeabi_errno_addr                                
-00001f4d  __aeabi_memcpy                                    
-00001f4d  __aeabi_memcpy4                                   
-00001f4d  __aeabi_memcpy8                                   
-00001f65  abort                                             
-00001f6a  C$$EXIT                                           
-00001f6b  HOSTexit                                          
-00001f6f  Reset_Handler                                     
-00001f73  _system_pre_init                                  
+00001895  key_scan                                          
+000018f1  printf                                            
+0000194d  SYSCFG_DL_GPIO_init                               
+000019a5  DL_DMA_initChannel                                
+000019f1  copy_in                                           
+00001a3d  __TI_auto_init_nopinit                            
+00001a89  DL_UART_init                                      
+00001ad1  SYSCFG_DL_initPower                               
+00001b19  DL_ADC12_setClockConfig                           
+00001b59  EEPROM_TypeB_write                                
+00001b99  SYSCFG_DL_SYSCTL_init                             
+00001bd9  SYSCFG_DL_TIMER_0_init                            
+00001c19  __aeabi_uidiv                                     
+00001c19  __aeabi_uidivmod                                  
+00001c59  atoi                                              
+00001c99  fputs                                             
+00001cd9  __muldsi3                                         
+00001d13  _nop                                              
+00001d15  SYSCFG_DL_init                                    
+00001d41  ADC0_IRQHandler                                   
+00001d69  DL_FlashCTL_programMemoryFromRAM64WithECCGenerated
+00001d91  _c_int00_noargs                                   
+00001db9  SYSCFG_DL_DMA_CH0_init                            
+00001ddd  __aeabi_lmul                                      
+00001ddd  __muldi3                                          
+00001e01  memccpy                                           
+00001e23  key_init                                          
+00001e25  DL_UART_transmitDataBlocking                      
+00001e45  __aeabi_llsl                                      
+00001e45  __ashldi3                                         
+00001e65  DL_Timer_setClockConfig                           
+00001e81  DL_FlashCTL_eraseMemoryFromRAM                    
+00001e99  __aeabi_uldivmod                                  
+00001ead  fputc                                             
+00001ec1  DL_UART_setClockConfig                            
+00001ed3  __TI_decompress_none                              
+00001ee5  wcslen                                            
+00001ef5  __TI_zero_init                                    
+00001f05  __aeabi_memset                                    
+00001f05  __aeabi_memset4                                   
+00001f05  __aeabi_memset8                                   
+00001f21  __aeabi_memclr                                    
+00001f21  __aeabi_memclr4                                   
+00001f21  __aeabi_memclr8                                   
+00001f2d  DL_Common_delayCycles                             
+00001f37  SYSCFG_DL_DMA_init                                
+00001f41  __aeabi_errno_addr                                
+00001f49  __aeabi_memcpy                                    
+00001f49  __aeabi_memcpy4                                   
+00001f49  __aeabi_memcpy8                                   
+00001f61  abort                                             
+00001f66  C$$EXIT                                           
+00001f67  HOSTexit                                          
+00001f6b  Reset_Handler                                     
+00001f6f  _system_pre_init                                  
 00001ff0  __aeabi_ctype_table_                              
 00001ff0  __aeabi_ctype_table_C                             
 000021b0  __TI_Handler_Table_Base                           
