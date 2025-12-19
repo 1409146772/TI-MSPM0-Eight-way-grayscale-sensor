@@ -20,9 +20,9 @@ void process_avg_and_restart_timer(void)
     for (uint32_t ch = 0; ch < channels; ch++) {
         avg[ch] = sum[ch] / per_channel;
     }
-    for (uint32_t ch = 0; ch < 8; ch++) {
-        printf("CH%lu avg=%lu\r\n", (unsigned long)ch, (unsigned long)avg[ch]);
-    }
+    // for (uint32_t ch = 0; ch < 8; ch++) {
+    //     printf("CH%lu avg=%lu\r\n", (unsigned long)ch, (unsigned long)avg[ch]);
+    // }
     DL_TimerA_setLoadValue(TIMER_0_INST, TIMER_0_INST_LOAD_VALUE); 
     DL_TimerA_startCounter(TIMER_0_INST);
 }

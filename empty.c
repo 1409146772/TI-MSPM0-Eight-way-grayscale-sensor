@@ -24,6 +24,35 @@ uint32_t last_avg[8];
 volatile uint32_t flag = 0;     /* 数据处理标志位：1 表示 DMA 已完成、主循环需要进行处理 */
 
 /* =========================
+ * 按键回调函数
+ * ========================= */
+void on_key_b1_event(KeyEvent_t event)
+{
+    if (event == KEY_EVENT_SHORT_PRESS) {
+        printf("KEY B1 Short Press\n");
+        // 短按逻辑...
+    } else if (event == KEY_EVENT_LONG_PRESS) {
+        printf("KEY B1 Long Press\n");
+        // 长按逻辑...
+    }
+}
+
+void on_key_b2_event(KeyEvent_t event)
+{
+    if (event == KEY_EVENT_SHORT_PRESS) {
+        printf("KEY B2 Short Press\n");
+        /* 示例：短按保存 EEPROM */
+        DL_GPIO_togglePins(LED_PB22_PORT, LED_PB22_PIN);
+        for (uint16_t i = 0; i < 8; i++) {
+            EEPROM_TypeB_write(i, avg[i]);
+        }
+    } else if (event == KEY_EVENT_LONG_PRESS) {
+        printf("KEY B2 Long Press\n");
+        /* 示例：长按执行其他操作 */
+    }
+}
+
+/* =========================
  * 主函数：系统初始化与主循环
  * 流程：
  * 1) 初始化系统与驱动库；
@@ -63,7 +92,11 @@ int main(void)
 
     /* 使能 ADC12 中断（用于接收 DMA 完成事件） */
     NVIC_EnableIRQ(ADC12_0_INST_INT_IRQN);
+    
+    /* 初始化按键模块并注册回调 */
     key_init();
+    key_register_callback(KEY_ID_B1, on_key_b1_event);
+    key_register_callback(KEY_ID_B2, on_key_b2_event);
     
     /* 完成 DMA/中断配置后再启动定时器触发采样 */
     DL_TimerA_startCounter(TIMER_0_INST);
@@ -75,17 +108,8 @@ int main(void)
         if (flag) {
             process_avg_and_restart_timer();
         }
-        {
-            uint8_t k = key_scan();
-            if (k == 3) {
-                DL_GPIO_togglePins(LED_PB22_PORT, LED_PB22_PIN);
-                for (uint16_t i = 0; i < 8; i++) {
-                    EEPROM_TypeB_write(i, avg[i]);
-                }
-            }
-        }
         
-        
+        /* 旧的 key_scan 调用已移除，逻辑移至回调函数 */
     }
 }
 

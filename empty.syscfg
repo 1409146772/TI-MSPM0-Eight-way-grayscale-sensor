@@ -17,6 +17,7 @@ const GPIO2  = GPIO.addInstance();
 const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL");
 const TIMER  = scripting.addModule("/ti/driverlib/TIMER", {}, false);
 const TIMER1 = TIMER.addInstance();
+const TIMER2 = TIMER.addInstance();
 const UART   = scripting.addModule("/ti/driverlib/UART", {}, false);
 const UART1  = UART.addInstance();
 
@@ -74,24 +75,17 @@ Board.peripheral.swclkPin.$assign = "PA20";
 Board.peripheral.swdioPin.$assign = "PA19";
 
 GPIO1.$name                              = "KEY";
-GPIO1.associatedPins.create(3);
-GPIO1.associatedPins[0].$name            = "B2";
+GPIO1.associatedPins.create(2);
 GPIO1.associatedPins[0].direction        = "INPUT";
 GPIO1.associatedPins[0].assignedPort     = "PORTA";
 GPIO1.associatedPins[0].assignedPin      = "8";
 GPIO1.associatedPins[0].internalResistor = "PULL_UP";
-GPIO1.associatedPins[0].pin.$assign      = "PA8";
-GPIO1.associatedPins[1].$name            = "B3";
+GPIO1.associatedPins[0].$name            = "B1";
 GPIO1.associatedPins[1].direction        = "INPUT";
 GPIO1.associatedPins[1].internalResistor = "PULL_UP";
 GPIO1.associatedPins[1].assignedPort     = "PORTB";
 GPIO1.associatedPins[1].assignedPin      = "3";
-GPIO1.associatedPins[1].pin.$assign      = "PB3";
-GPIO1.associatedPins[2].$name            = "PB21";
-GPIO1.associatedPins[2].direction        = "INPUT";
-GPIO1.associatedPins[2].assignedPort     = "PORTB";
-GPIO1.associatedPins[2].assignedPin      = "21";
-GPIO1.associatedPins[2].internalResistor = "PULL_UP";
+GPIO1.associatedPins[1].$name            = "B2";
 
 GPIO2.$name                          = "LED";
 GPIO2.associatedPins.create(9);
@@ -142,6 +136,11 @@ TIMER1.event1ControllerInterruptEn = ["ZERO_EVENT"];
 TIMER1.timerPeriod                 = "2ms";
 TIMER1.peripheral.$assign          = "TIMA0";
 
+TIMER2.$name       = "KEY_TIMER_1";
+TIMER2.timerPeriod = "1ms";
+TIMER2.timerMode   = "PERIODIC";
+TIMER2.interrupts  = ["ZERO"];
+
 UART1.$name                    = "UART_0";
 UART1.enabledInterrupts        = ["RX"];
 UART1.uartClkDiv               = "8";
@@ -159,5 +158,7 @@ ProjectConfig.migrationCondition = true;
  * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
  * re-solve from scratch.
  */
-GPIO1.associatedPins[2].pin.$suggestSolution = "PB21";
+GPIO1.associatedPins[0].pin.$suggestSolution = "PA8";
+GPIO1.associatedPins[1].pin.$suggestSolution = "PB3";
 GPIO2.associatedPins[8].pin.$suggestSolution = "PB22";
+TIMER2.peripheral.$suggestSolution           = "TIMA1";

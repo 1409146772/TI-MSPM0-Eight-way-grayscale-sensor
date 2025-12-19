@@ -83,6 +83,11 @@ extern "C" {
 #define TIMER_0_INST_INT_IRQN                                   (TIMA0_INT_IRQn)
 #define TIMER_0_INST_LOAD_VALUE                                         (63999U)
 #define TIMER_0_INST_PUB_0_CH                                                (1)
+/* Defines for KEY_TIMER_1 */
+#define KEY_TIMER_1_INST                                                 (TIMA1)
+#define KEY_TIMER_1_INST_IRQHandler                             TIMA1_IRQHandler
+#define KEY_TIMER_1_INST_INT_IRQN                               (TIMA1_INT_IRQn)
+#define KEY_TIMER_1_INST_LOAD_VALUE                                     (31999U)
 
 
 
@@ -158,18 +163,14 @@ extern "C" {
 #define ADC12_0_INST_DMA_TRIGGER                      (DMA_ADC0_EVT_GEN_BD_TRIG)
 
 
-/* Defines for B2: GPIOA.8 with pinCMx 19 on package pin 54 */
-#define KEY_B2_PORT                                                      (GPIOA)
-#define KEY_B2_PIN                                               (DL_GPIO_PIN_8)
-#define KEY_B2_IOMUX                                             (IOMUX_PINCM19)
-/* Defines for B3: GPIOB.3 with pinCMx 16 on package pin 51 */
-#define KEY_B3_PORT                                                      (GPIOB)
-#define KEY_B3_PIN                                               (DL_GPIO_PIN_3)
-#define KEY_B3_IOMUX                                             (IOMUX_PINCM16)
-/* Defines for PB21: GPIOB.21 with pinCMx 49 on package pin 20 */
-#define KEY_PB21_PORT                                                    (GPIOB)
-#define KEY_PB21_PIN                                            (DL_GPIO_PIN_21)
-#define KEY_PB21_IOMUX                                           (IOMUX_PINCM49)
+/* Defines for B1: GPIOA.8 with pinCMx 19 on package pin 54 */
+#define KEY_B1_PORT                                                      (GPIOA)
+#define KEY_B1_PIN                                               (DL_GPIO_PIN_8)
+#define KEY_B1_IOMUX                                             (IOMUX_PINCM19)
+/* Defines for B2: GPIOB.3 with pinCMx 16 on package pin 51 */
+#define KEY_B2_PORT                                                      (GPIOB)
+#define KEY_B2_PIN                                               (DL_GPIO_PIN_3)
+#define KEY_B2_IOMUX                                             (IOMUX_PINCM16)
 /* Defines for LED0: GPIOB.6 with pinCMx 23 on package pin 58 */
 #define LED_LED0_PORT                                                    (GPIOB)
 #define LED_LED0_PIN                                             (DL_GPIO_PIN_6)
@@ -214,6 +215,7 @@ void SYSCFG_DL_initPower(void);
 void SYSCFG_DL_GPIO_init(void);
 void SYSCFG_DL_SYSCTL_init(void);
 void SYSCFG_DL_TIMER_0_init(void);
+void SYSCFG_DL_KEY_TIMER_1_init(void);
 void SYSCFG_DL_UART_0_init(void);
 void SYSCFG_DL_ADC12_0_init(void);
 void SYSCFG_DL_DMA_init(void);
