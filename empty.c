@@ -109,7 +109,7 @@ void on_key_b1_event(KeyEvent_t event)
                 uint32_t diff = (white_val[i] > black_val[i]) ?
                                 (white_val[i] - black_val[i]) :
                                 (black_val[i] - white_val[i]);
-                uint32_t redundancy = diff / 5;     /* 冗余区间，防止抖动 */
+                uint32_t redundancy = diff / 2;     /* 冗余区间，防止抖动 */
 
                 /* 最终阈值：白阈值 = 白基准 - redundancy；黑阈值 = 黑基准 + redundancy */
                 white_threshold[i] = white_val[i] - redundancy;
